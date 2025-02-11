@@ -1,11 +1,9 @@
 'use strict';
 
 let number = Math.trunc(Math.random() * 20) + 1;
-console.log(number);
 
 let score = 20;
 let highscore = 0;
-let lost = 0;
 const setMessage = function (message) {
     document.querySelector('.message').textContent = message;
 };
@@ -14,10 +12,9 @@ document.querySelector('.check').addEventListener('click', () => {
     if (!guess) {
         setMessage('No number!');
     } else if (score === 0) {
-        setMessage('You lose!');
+        setMessage(`You lose, the number was ${number}!`);
         document.querySelector('body').style.backgroundColor =
             'rgb(197, 6, 6) ';
-        lost = 1;
     } else {
         if (guess === number) {
             document.querySelector('.number').textContent = number;
@@ -40,9 +37,6 @@ document.querySelector('.check').addEventListener('click', () => {
 });
 
 document.querySelector('.again').addEventListener('click', () => {
-    if (!lost) number = Math.trunc(Math.random() * 20) + 1;
-    console.log(number);
-
     score = 20;
     document.querySelector('.score').textContent = 20;
     document.querySelector('body').style.backgroundColor = '#222';
